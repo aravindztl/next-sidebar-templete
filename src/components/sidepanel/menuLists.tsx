@@ -1,0 +1,165 @@
+import { MenuItem, UserRole } from "@/types/types";
+import {
+  PiBell,
+  PiCheckSquareOffset,
+  PiCirclesFour,
+  PiCoins,
+  PiFlagBanner,
+  PiGearSix,
+  PiLineSegments,
+  PiRoadHorizon,
+  PiSealPercent,
+  PiUser,
+} from "react-icons/pi";
+// Role-based menu configuration
+export const menuConfig: Record<UserRole, MenuItem[]> = {
+  admin: [
+    {
+      id: "dashboard",
+      name: "Dashboard",
+      icon: <PiCirclesFour />,
+      path: "/admin/dashboard",
+    },
+    {
+      id: "user-management",
+      name: "User Management",
+      icon: <PiUser />,
+      path: "/admin/user-management",
+      requiredPrivilege: "can_view_users",
+      submenu: [
+        {
+          id: "all-users",
+          name: "All Users",
+          path: "/admin/user-management/all-users",
+          requiredPrivilege: "can_view_users",
+        },
+        {
+          id: "active-users",
+          name: "Active Users",
+          path: "/admin/user-management/active-users",
+          requiredPrivilege: "can_view_users",
+        },
+        {
+          id: "inactive-users",
+          name: "Inactive Users",
+          path: "/admin/user-management/inactive-users",
+          requiredPrivilege: "can_view_users",
+        },
+      ],
+    },
+    {
+      id: "tournaments",
+      name: "Tournaments",
+      icon: <PiFlagBanner />,
+      path: "/admin/tournaments",
+      requiredPrivilege: "can_view_tournaments",
+      submenu: [
+        {
+          id: "all-tournaments",
+          name: "All Tournaments",
+          path: "/admin/tournaments/all-tournaments",
+          requiredPrivilege: "can_view_tournaments",
+        },
+        {
+          id: "ongoing-tournaments",
+          name: "Ongoing",
+          path: "/admin/tournaments/ongoing-tournaments",
+          requiredPrivilege: "can_view_tournaments",
+        },
+        {
+          id: "upcoming-tournaments",
+          name: "Upcoming",
+          path: "/admin/tournaments/upcoming-tournaments",
+          requiredPrivilege: "can_view_tournaments",
+        },
+        {
+          id: "not-published-tournaments",
+          name: "Not Published",
+          path: "/admin/tournaments/not-published-tournaments",
+          requiredPrivilege: "can_view_tournaments",
+        },
+        {
+          id: "finished-tournaments",
+          name: "Finished",
+          path: "/admin/tournaments/finished-tournaments",
+          requiredPrivilege: "can_view_tournaments",
+        },
+      ],
+    },
+    {
+      id: "practice-bookings",
+      name: "Practice Booking",
+      icon: <PiRoadHorizon />,
+      path: "/admin/practice-bookings",
+      requiredPrivilege: "can_view_practice_slots",
+      submenu: [
+        {
+          id: "all-bookings",
+          name: "All Bookings",
+          path: "/admin/practice-bookings/all-bookings",
+          requiredPrivilege: "can_view_practice_slots",
+        },
+        {
+          id: "upcoming-bookings",
+          name: "Upcoming Bookings",
+          path: "/admin/practice-bookings/upcoming-bookings",
+          requiredPrivilege: "can_view_practice_slots",
+        },
+        {
+          id: "completed-bookings",
+          name: "Completed Bookings",
+          path: "/admin/practice-bookings/completed-bookings",
+          requiredPrivilege: "can_view_practice_slots",
+        },
+        {
+          id: "Slots",
+          name: "Slots",
+          path: "/admin/practice-bookings/slots",
+          requiredPrivilege: "can_view_practice_slots",
+        },
+      ],
+    },
+    {
+      id: "tracks",
+      name: "Tracks",
+      icon: <PiLineSegments />,
+      path: "/admin/tracks",
+      requiredPrivilege: "can_view_tracks",
+    },
+    {
+      id: "promotions",
+      name: "Promotions",
+      icon: <PiSealPercent />,
+      path: "/admin/promotions",
+      requiredPrivilege: "can_view_promotions",
+    },
+    {
+      id: "transactions",
+      name: "Transactions",
+      icon: <PiCoins />,
+      path: "/admin/transactions",
+      requiredPrivilege: "can_view_transactions",
+    },
+    {
+      id: "staff-privileges",
+      name: "Staff Privileges",
+      icon: <PiCheckSquareOffset />,
+      path: "/admin/staff-privileges",
+      requiredPrivilege: "can_view_staff_privileges",
+    },
+    {
+      id: "push-notifications",
+      name: "Push Notifications",
+      icon: <PiBell />,
+      path: "/admin/push-notifications",
+      requiredPrivilege: "can_view_push_notifications",
+    },
+    {
+      id: "settings",
+      name: "Settings",
+      icon: <PiGearSix />,
+      path: "/admin/settings",
+      requiredPrivilege: "can_view_settings",
+    },
+  ],
+};
