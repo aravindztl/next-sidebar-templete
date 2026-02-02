@@ -70,11 +70,11 @@ export const useSidebarOpenState = () => {
     isMobileMenuOpen,
     setIsMobileMenuOpen,
     toggleMobileMenu,
-    isSidePanelExpanded: data?.isSidePanelExpanded,
+    isSidePanelExpanded: !!data?.isSidePanelExpanded,
     setIsSidePanelExpanded,
     toggleSidePanel,
     isPinned: data?.isPinned,
-    isMobile,
+    isMobile:!!isMobile,
     setIsMobile
   };
 };
