@@ -1,4 +1,4 @@
-import { MenuItem, UserRole } from "@/types/types";
+import { MenuItem, UserRole } from "@/types/global";
 import {
   PiBell,
   PiCheckSquareOffset,
@@ -11,7 +11,7 @@ import {
   PiSealPercent,
   PiUser,
 } from "react-icons/pi";
-// Role-based menu configuration
+
 export const menuConfig: Record<UserRole, MenuItem[]> = {
   admin: [
     {

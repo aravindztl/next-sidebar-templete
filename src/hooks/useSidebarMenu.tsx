@@ -23,7 +23,8 @@ export const useSidebarMenu = (role: UserRole) => {
   }, [role]);
 
   const menuItems = useMemo(() => {
-    return filterMenuByPrivileges(baseMenuItems, user?.privileges);
+    // return filterMenuByPrivileges(baseMenuItems, user?.privileges);
+    return baseMenuItems;
   }, [baseMenuItems, user?.privileges]);
 
   const { activeParentId, activeSubmenuId } = useMemo(() => {
@@ -39,7 +40,7 @@ export const useSidebarMenu = (role: UserRole) => {
     const parentPathSegment = segments[1];
     const fullParentPath = `/admin/${parentPathSegment}`;
 
-    const parentItem: MenuItem = menuItems.find(
+    const parentItem: MenuItem | undefined= menuItems.find(
       (item) => item.path === fullParentPath,
     );
 

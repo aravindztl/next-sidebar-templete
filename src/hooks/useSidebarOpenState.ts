@@ -23,9 +23,58 @@ export const useSidebarOpenState = () => {
     );
   };
 
+  const { data } = useQuery({
+    queryKey: sidebarKeys.sidePanel,
+    queryFn: () => {
+      return {
+        isSidePanelExpanded: false,
+        isPinned: false,
+      };
+    },
+    staleTime: Infinity,
+  });
+
+  const setIsSidePanelExpanded = (value: boolean) => {
+    queryClient.setQueryData(
+      sidebarKeys.sidePanel,
+      (prev: { isSidePanelExpanded: boolean; isPinned: boolean }) => ({
+        isSidePanelExpanded: value,
+        isPinned: !!prev?.isPinned,
+      }),
+    );
+  };
+
+  const toggleSidePanel = () => {
+    queryClient.setQueryData(
+      sidebarKeys.sidePanel,
+      (prev: { isSidePanelExpanded: boolean; isPinned: boolean }) => ({
+        isSidePanelExpanded: !prev?.isSidePanelExpanded,
+        isPinned: !prev?.isSidePanelExpanded,
+      }),
+    );
+  };
+
+    const { data:isMobile } = useQuery({
+    queryKey: sidebarKeys.isMobile,
+    queryFn: () => false,
+    staleTime: Infinity,
+  });
+
+
+  const setIsMobile = (value: boolean) => {
+    queryClient.setQueryData(sidebarKeys.isMobile, value);
+  };
+
+
   return {
     isMobileMenuOpen,
     setIsMobileMenuOpen,
     toggleMobileMenu,
+    isSidePanelExpanded: data?.isSidePanelExpanded,
+    setIsSidePanelExpanded,
+    toggleSidePanel,
+    isPinned: data?.isPinned,
+    isMobile,
+    setIsMobile
   };
 };

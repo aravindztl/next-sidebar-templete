@@ -48,13 +48,13 @@ export default function SidePanel({ role }: SidePanelProps) {
               initial={{ x: "-100%" }}
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
+              transition={{ duration: 0.2 }}
             >
               <SidePanelContent
                 pathname={pathname}
                 menuItems={menuItems}
                 isExpanded={true}
                 openMenus={openMenus}
-  
                 activeSubmenuId={activeSubmenuId}
                 handleParentMenuClick={handleParentMenuClick}
                 handleNavigation={handleNavigation}
@@ -77,7 +77,7 @@ export default function SidePanel({ role }: SidePanelProps) {
           <SidePanelContent
             pathname={pathname}
             menuItems={menuItems}
-            isExpanded={isSidePanelExpanded}
+            isExpanded={!!isSidePanelExpanded}
             openMenus={openMenus}
             activeSubmenuId={activeSubmenuId}
             handleParentMenuClick={handleParentMenuClick}

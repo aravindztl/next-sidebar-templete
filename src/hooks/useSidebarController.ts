@@ -7,14 +7,17 @@ import { useSidebarOpenState } from "./useSidebarOpenState";
 export const useSidebarController = () => {
   const pathname = usePathname();
 
-  const [isSidePanelExpanded, setIsSidePanelExpanded] = useState(true);
-  const [isPinned, setIsPinned] = useState(true);
-  const [isMobile, setIsMobile] = useState(false);
 
   const {
     isMobileMenuOpen,
     setIsMobileMenuOpen,
     toggleMobileMenu,
+    isSidePanelExpanded,
+    toggleSidePanel,
+    setIsSidePanelExpanded,
+    isPinned,
+    isMobile,
+    setIsMobile
   } = useSidebarOpenState();
 
   useEffect(() => {
@@ -29,24 +32,10 @@ export const useSidebarController = () => {
     return () => window.removeEventListener("resize", checkIfMobile);
   }, []);
 
-  useEffect(() => {
-    if (isMobile) {
-      setIsMobileMenuOpen(false);
-    }
-  }, [pathname, isMobile, setIsMobileMenuOpen]);
-
-  const toggleSidePanel = () => {
-    const newExpanded = !isSidePanelExpanded;
-    setIsSidePanelExpanded(newExpanded);
-    setIsPinned(newExpanded);
-  };
-
   return {
     pathname,
     isSidePanelExpanded,
     setIsSidePanelExpanded,
-    isPinned,
-    setIsPinned,
 
     isMobileMenuOpen,
     setIsMobileMenuOpen,
@@ -54,5 +43,6 @@ export const useSidebarController = () => {
 
     isMobile,
     toggleSidePanel,
+    isPinned
   };
 };
